@@ -1,0 +1,6 @@
+version: "Apple Swift version 2.0 (swiftlang-700.0.59 clang-700.0.72)"
+options: "47d807ddbdc7d38dae33ed93e1d820e1"
+build_time: [541982427, 44824000]
+inputs: 
+	"/Users/OKD/Documents/Xcode/DankMeets/DankMeets/AppDelegate.swift": [541982426, 0]
+	"/Users/OKD/Documents/Xcode/DankMeets/DankMeets/ViewController.swift": [541982425, 0]
