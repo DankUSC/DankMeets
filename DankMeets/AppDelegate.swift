@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window?.rootViewController =
 			UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
 		
+		UINavigationBar.appearance().shadowImage = UIImage()
+		
 		return true
 	}
 

@@ -6,33 +6,38 @@ provides-nominal:
 provides-member:
 - ["C9DankMeets11AppDelegate", ""]
 provides-dynamic-lookup:
-- "applicationDidBecomeActive"
-- "applicationWillTerminate"
-- "window"
-- "application"
+- "applicationDidEnterBackground"
 - "applicationWillResignActive"
 - "applicationWillEnterForeground"
-- "applicationDidEnterBackground"
+- "window"
+- "application"
+- "applicationDidBecomeActive"
+- "applicationWillTerminate"
 depends-top-level:
-- "UIApplication"
-- "NSObject"
 - !private "UIScreen"
-- "UIApplicationDelegate"
-- !private "UICollectionViewFlowLayout"
-- !private "BooleanLiteralType"
+- !private "UINavigationController"
+- "NSObject"
+- "AppDelegate"
 - "AnyObject"
+- !private "UICollectionViewFlowLayout"
+- "UIWindow"
+- "UIApplication"
+- !private "UINavigationBar"
+- !private "UIImage"
+- !private "HomeController"
+- !private "BooleanLiteralType"
 - "Bool"
 - "UIResponder"
-- !private "HomeController"
-- "UIWindow"
-- !private "UINavigationController"
-- "AppDelegate"
+- "UIApplicationDelegate"
 depends-member:
 - !private ["PSs9AnyObject", "HomeController"]
 - !private ["PSs9AnyObject", "UICollectionViewFlowLayout"]
+- !private ["PSs9AnyObject", "UIImage"]
+- !private ["PSs9AnyObject", "UINavigationBar"]
 - !private ["PSs9AnyObject", "UINavigationController"]
 - !private ["PSs9AnyObject", "UIScreen"]
 - !private ["PSs9AnyObject", "UIWindow"]
+- !private ["PSs9AnyObject", "appearance"]
 - ["PSs9AnyObject", "application"]
 - ["PSs9AnyObject", "applicationDidBecomeActive"]
 - ["PSs9AnyObject", "applicationDidEnterBackground"]
@@ -50,6 +55,7 @@ depends-member:
 - !private ["PSs9AnyObject", "mainScreen"]
 - !private ["PSs9AnyObject", "makeKeyAndVisible"]
 - !private ["PSs9AnyObject", "rootViewController"]
+- !private ["PSs9AnyObject", "shadowImage"]
 - ["PSs9AnyObject", "window"]
 - ["PSs9AnyObject", ""]
 - ["C9DankMeets11AppDelegate", "AnyObject"]
@@ -58,6 +64,8 @@ depends-member:
 - ["C9DankMeets11AppDelegate", "NSObject"]
 - ["C9DankMeets11AppDelegate", "UIApplication"]
 - !private ["C9DankMeets11AppDelegate", "UICollectionViewFlowLayout"]
+- !private ["C9DankMeets11AppDelegate", "UIImage"]
+- !private ["C9DankMeets11AppDelegate", "UINavigationBar"]
 - !private ["C9DankMeets11AppDelegate", "UINavigationController"]
 - !private ["C9DankMeets11AppDelegate", "UIScreen"]
 - ["C9DankMeets11AppDelegate", "UIWindow"]
@@ -78,9 +86,12 @@ depends-member:
 - ["C9DankMeets11AppDelegate", "window"]
 - !private ["PSs11CVarArgType", "HomeController"]
 - !private ["PSs11CVarArgType", "UICollectionViewFlowLayout"]
+- !private ["PSs11CVarArgType", "UIImage"]
+- !private ["PSs11CVarArgType", "UINavigationBar"]
 - !private ["PSs11CVarArgType", "UINavigationController"]
 - !private ["PSs11CVarArgType", "UIScreen"]
 - !private ["PSs11CVarArgType", "UIWindow"]
+- !private ["PSs11CVarArgType", "appearance"]
 - ["PSs11CVarArgType", "application"]
 - ["PSs11CVarArgType", "applicationDidBecomeActive"]
 - ["PSs11CVarArgType", "applicationDidEnterBackground"]
@@ -98,13 +109,17 @@ depends-member:
 - !private ["PSs11CVarArgType", "mainScreen"]
 - !private ["PSs11CVarArgType", "makeKeyAndVisible"]
 - !private ["PSs11CVarArgType", "rootViewController"]
+- !private ["PSs11CVarArgType", "shadowImage"]
 - ["PSs11CVarArgType", "window"]
 - ["PSs11CVarArgType", ""]
 - !private ["PSs23CustomStringConvertible", "HomeController"]
 - !private ["PSs23CustomStringConvertible", "UICollectionViewFlowLayout"]
+- !private ["PSs23CustomStringConvertible", "UIImage"]
+- !private ["PSs23CustomStringConvertible", "UINavigationBar"]
 - !private ["PSs23CustomStringConvertible", "UINavigationController"]
 - !private ["PSs23CustomStringConvertible", "UIScreen"]
 - !private ["PSs23CustomStringConvertible", "UIWindow"]
+- !private ["PSs23CustomStringConvertible", "appearance"]
 - ["PSs23CustomStringConvertible", "application"]
 - ["PSs23CustomStringConvertible", "applicationDidBecomeActive"]
 - ["PSs23CustomStringConvertible", "applicationDidEnterBackground"]
@@ -122,13 +137,17 @@ depends-member:
 - !private ["PSs23CustomStringConvertible", "mainScreen"]
 - !private ["PSs23CustomStringConvertible", "makeKeyAndVisible"]
 - !private ["PSs23CustomStringConvertible", "rootViewController"]
+- !private ["PSs23CustomStringConvertible", "shadowImage"]
 - ["PSs23CustomStringConvertible", "window"]
 - ["PSs23CustomStringConvertible", ""]
 - !private ["PSs9Equatable", "HomeController"]
 - !private ["PSs9Equatable", "UICollectionViewFlowLayout"]
+- !private ["PSs9Equatable", "UIImage"]
+- !private ["PSs9Equatable", "UINavigationBar"]
 - !private ["PSs9Equatable", "UINavigationController"]
 - !private ["PSs9Equatable", "UIScreen"]
 - !private ["PSs9Equatable", "UIWindow"]
+- !private ["PSs9Equatable", "appearance"]
 - ["PSs9Equatable", "application"]
 - ["PSs9Equatable", "applicationDidBecomeActive"]
 - ["PSs9Equatable", "applicationDidEnterBackground"]
@@ -146,13 +165,17 @@ depends-member:
 - !private ["PSs9Equatable", "mainScreen"]
 - !private ["PSs9Equatable", "makeKeyAndVisible"]
 - !private ["PSs9Equatable", "rootViewController"]
+- !private ["PSs9Equatable", "shadowImage"]
 - ["PSs9Equatable", "window"]
 - ["PSs9Equatable", ""]
 - !private ["PSs8Hashable", "HomeController"]
 - !private ["PSs8Hashable", "UICollectionViewFlowLayout"]
+- !private ["PSs8Hashable", "UIImage"]
+- !private ["PSs8Hashable", "UINavigationBar"]
 - !private ["PSs8Hashable", "UINavigationController"]
 - !private ["PSs8Hashable", "UIScreen"]
 - !private ["PSs8Hashable", "UIWindow"]
+- !private ["PSs8Hashable", "appearance"]
 - ["PSs8Hashable", "application"]
 - ["PSs8Hashable", "applicationDidBecomeActive"]
 - ["PSs8Hashable", "applicationDidEnterBackground"]
@@ -170,12 +193,15 @@ depends-member:
 - !private ["PSs8Hashable", "mainScreen"]
 - !private ["PSs8Hashable", "makeKeyAndVisible"]
 - !private ["PSs8Hashable", "rootViewController"]
+- !private ["PSs8Hashable", "shadowImage"]
 - ["PSs8Hashable", "window"]
 - ["PSs8Hashable", ""]
 - !private ["C9DankMeets14HomeController", "init"]
+- !private ["PSo8NSCoding", "appearance"]
 - !private ["PSo8NSCoding", "init"]
 - !private ["PSo8NSCoding", "makeKeyAndVisible"]
 - !private ["PSo8NSCoding", "rootViewController"]
+- !private ["PSo8NSCoding", "shadowImage"]
 - !private ["PSo26NSExtensionRequestHandling", "init"]
 - ["CSo8NSObject", "AnyObject"]
 - ["CSo8NSObject", "Bool"]
@@ -183,9 +209,12 @@ depends-member:
 - ["CSo8NSObject", "NSObject"]
 - ["CSo8NSObject", "UIApplication"]
 - !private ["CSo8NSObject", "UICollectionViewFlowLayout"]
+- !private ["CSo8NSObject", "UIImage"]
+- !private ["CSo8NSObject", "UINavigationBar"]
 - !private ["CSo8NSObject", "UINavigationController"]
 - !private ["CSo8NSObject", "UIScreen"]
 - ["CSo8NSObject", "UIWindow"]
+- !private ["CSo8NSObject", "appearance"]
 - ["CSo8NSObject", "application"]
 - ["CSo8NSObject", "applicationDidBecomeActive"]
 - ["CSo8NSObject", "applicationDidEnterBackground"]
@@ -203,12 +232,16 @@ depends-member:
 - !private ["CSo8NSObject", "mainScreen"]
 - !private ["CSo8NSObject", "makeKeyAndVisible"]
 - !private ["CSo8NSObject", "rootViewController"]
+- !private ["CSo8NSObject", "shadowImage"]
 - ["CSo8NSObject", "window"]
 - !private ["PSo16NSObjectProtocol", "HomeController"]
 - !private ["PSo16NSObjectProtocol", "UICollectionViewFlowLayout"]
+- !private ["PSo16NSObjectProtocol", "UIImage"]
+- !private ["PSo16NSObjectProtocol", "UINavigationBar"]
 - !private ["PSo16NSObjectProtocol", "UINavigationController"]
 - !private ["PSo16NSObjectProtocol", "UIScreen"]
 - !private ["PSo16NSObjectProtocol", "UIWindow"]
+- !private ["PSo16NSObjectProtocol", "appearance"]
 - ["PSo16NSObjectProtocol", "application"]
 - ["PSo16NSObjectProtocol", "applicationDidBecomeActive"]
 - ["PSo16NSObjectProtocol", "applicationDidEnterBackground"]
@@ -226,19 +259,29 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "mainScreen"]
 - !private ["PSo16NSObjectProtocol", "makeKeyAndVisible"]
 - !private ["PSo16NSObjectProtocol", "rootViewController"]
+- !private ["PSo16NSObjectProtocol", "shadowImage"]
 - ["PSo16NSObjectProtocol", "window"]
 - ["PSo16NSObjectProtocol", ""]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["PSo29UIAccessibilityIdentification", "appearance"]
 - !private ["PSo29UIAccessibilityIdentification", "init"]
 - !private ["PSo29UIAccessibilityIdentification", "makeKeyAndVisible"]
 - !private ["PSo29UIAccessibilityIdentification", "rootViewController"]
+- !private ["PSo29UIAccessibilityIdentification", "shadowImage"]
+- !private ["PSo12UIAppearance", "appearance"]
 - !private ["PSo12UIAppearance", "init"]
 - !private ["PSo12UIAppearance", "makeKeyAndVisible"]
 - !private ["PSo12UIAppearance", "rootViewController"]
+- !private ["PSo12UIAppearance", "shadowImage"]
+- !private ["PSo21UIAppearanceContainer", "appearance"]
 - !private ["PSo21UIAppearanceContainer", "init"]
 - !private ["PSo21UIAppearanceContainer", "makeKeyAndVisible"]
 - !private ["PSo21UIAppearanceContainer", "rootViewController"]
+- !private ["PSo21UIAppearanceContainer", "shadowImage"]
 - !private ["PSo21UIApplicationDelegate", "HomeController"]
 - !private ["PSo21UIApplicationDelegate", "UICollectionViewFlowLayout"]
+- !private ["PSo21UIApplicationDelegate", "UIImage"]
+- !private ["PSo21UIApplicationDelegate", "UINavigationBar"]
 - !private ["PSo21UIApplicationDelegate", "UINavigationController"]
 - !private ["PSo21UIApplicationDelegate", "UIScreen"]
 - !private ["PSo21UIApplicationDelegate", "UIWindow"]
@@ -256,18 +299,28 @@ depends-member:
 - ["PSo21UIApplicationDelegate", "applicationWillTerminate"]
 - ["PSo21UIApplicationDelegate", "window"]
 - ["PSo21UIApplicationDelegate", ""]
+- !private ["PSo16UIBarPositioning", "appearance"]
+- !private ["PSo16UIBarPositioning", "shadowImage"]
 - !private ["CSo26UICollectionViewController", "init"]
 - !private ["PSo26UICollectionViewDataSource", "init"]
 - !private ["PSo24UICollectionViewDelegate", "init"]
+- !private ["PSo34UICollectionViewDelegateFlowLayout", "init"]
 - !private ["CSo26UICollectionViewFlowLayout", "init"]
 - !private ["CSo22UICollectionViewLayout", "init"]
 - !private ["PSo18UIContentContainer", "init"]
+- !private ["PSo17UICoordinateSpace", "appearance"]
 - !private ["PSo17UICoordinateSpace", "init"]
 - !private ["PSo17UICoordinateSpace", "makeKeyAndVisible"]
 - !private ["PSo17UICoordinateSpace", "rootViewController"]
+- !private ["PSo17UICoordinateSpace", "shadowImage"]
+- !private ["PSo13UIDynamicItem", "appearance"]
 - !private ["PSo13UIDynamicItem", "init"]
 - !private ["PSo13UIDynamicItem", "makeKeyAndVisible"]
 - !private ["PSo13UIDynamicItem", "rootViewController"]
+- !private ["PSo13UIDynamicItem", "shadowImage"]
+- !private ["CSo7UIImage", "init"]
+- !private ["CSo15UINavigationBar", "appearance"]
+- !private ["CSo15UINavigationBar", "shadowImage"]
 - !private ["CSo22UINavigationController", "init"]
 - ["CSo11UIResponder", "AnyObject"]
 - ["CSo11UIResponder", "Bool"]
@@ -275,9 +328,12 @@ depends-member:
 - ["CSo11UIResponder", "NSObject"]
 - ["CSo11UIResponder", "UIApplication"]
 - !private ["CSo11UIResponder", "UICollectionViewFlowLayout"]
+- !private ["CSo11UIResponder", "UIImage"]
+- !private ["CSo11UIResponder", "UINavigationBar"]
 - !private ["CSo11UIResponder", "UINavigationController"]
 - !private ["CSo11UIResponder", "UIScreen"]
 - ["CSo11UIResponder", "UIWindow"]
+- !private ["CSo11UIResponder", "appearance"]
 - ["CSo11UIResponder", "application"]
 - ["CSo11UIResponder", "applicationDidBecomeActive"]
 - ["CSo11UIResponder", "applicationDidEnterBackground"]
@@ -293,27 +349,34 @@ depends-member:
 - ["CSo11UIResponder", "init"]
 - !private ["CSo11UIResponder", "makeKeyAndVisible"]
 - !private ["CSo11UIResponder", "rootViewController"]
+- !private ["CSo11UIResponder", "shadowImage"]
 - ["CSo11UIResponder", "window"]
 - ["CSo11UIResponder", ""]
 - !private ["CSo8UIScreen", "bounds"]
 - !private ["CSo8UIScreen", "mainScreen"]
 - !private ["PSo20UIScrollViewDelegate", "init"]
 - !private ["PSo16UIStateRestoring", "init"]
+- !private ["PSo18UITraitEnvironment", "appearance"]
 - !private ["PSo18UITraitEnvironment", "bounds"]
 - !private ["PSo18UITraitEnvironment", "init"]
 - !private ["PSo18UITraitEnvironment", "mainScreen"]
 - !private ["PSo18UITraitEnvironment", "makeKeyAndVisible"]
 - !private ["PSo18UITraitEnvironment", "rootViewController"]
+- !private ["PSo18UITraitEnvironment", "shadowImage"]
+- !private ["CSo6UIView", "appearance"]
 - !private ["CSo6UIView", "init"]
 - !private ["CSo6UIView", "makeKeyAndVisible"]
 - !private ["CSo6UIView", "rootViewController"]
+- !private ["CSo6UIView", "shadowImage"]
 - !private ["CSo16UIViewController", "init"]
 - !private ["CSo8UIWindow", "init"]
 - !private ["CSo8UIWindow", "makeKeyAndVisible"]
 - !private ["CSo8UIWindow", "rootViewController"]
+- !private ["PSs12_Reflectable", "appearance"]
 - !private ["PSs12_Reflectable", "init"]
 - !private ["PSs12_Reflectable", "makeKeyAndVisible"]
 - !private ["PSs12_Reflectable", "rootViewController"]
+- !private ["PSs12_Reflectable", "shadowImage"]
 depends-nominal:
 - "PSs9AnyObject"
 - "C9DankMeets11AppDelegate"
@@ -326,18 +389,23 @@ depends-nominal:
 - !private "PSo26NSExtensionRequestHandling"
 - "CSo8NSObject"
 - "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
 - !private "PSo29UIAccessibilityIdentification"
 - !private "PSo12UIAppearance"
 - !private "PSo21UIAppearanceContainer"
 - "PSo21UIApplicationDelegate"
+- !private "PSo16UIBarPositioning"
 - !private "CSo26UICollectionViewController"
 - !private "PSo26UICollectionViewDataSource"
 - !private "PSo24UICollectionViewDelegate"
+- !private "PSo34UICollectionViewDelegateFlowLayout"
 - !private "CSo26UICollectionViewFlowLayout"
 - !private "CSo22UICollectionViewLayout"
 - !private "PSo18UIContentContainer"
 - !private "PSo17UICoordinateSpace"
 - !private "PSo13UIDynamicItem"
+- !private "CSo7UIImage"
+- !private "CSo15UINavigationBar"
 - !private "CSo22UINavigationController"
 - "CSo11UIResponder"
 - !private "CSo8UIScreen"

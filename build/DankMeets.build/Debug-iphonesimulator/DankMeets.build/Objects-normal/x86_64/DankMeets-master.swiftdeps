@@ -1,6 +1,7 @@
 version: "Apple Swift version 2.0 (swiftlang-700.0.59 clang-700.0.72)"
 options: "47d807ddbdc7d38dae33ed93e1d820e1"
-build_time: [541982427, 44824000]
+build_time: [541984837, 757702000]
 inputs: 
-	"/Users/OKD/Documents/Xcode/DankMeets/DankMeets/AppDelegate.swift": [541982426, 0]
-	"/Users/OKD/Documents/Xcode/DankMeets/DankMeets/ViewController.swift": [541982425, 0]
+	"/Users/OKD/Documents/Xcode/DankMeets/DankMeets/AppDelegate.swift": [541983802, 0]
+	"/Users/OKD/Documents/Xcode/DankMeets/DankMeets/MenuBar.swift": [541984257, 0]
+	"/Users/OKD/Documents/Xcode/DankMeets/DankMeets/HomeController.swift": [541984686, 0]

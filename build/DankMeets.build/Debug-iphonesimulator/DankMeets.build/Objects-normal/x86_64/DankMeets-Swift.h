@@ -108,6 +108,7 @@ SWIFT_CLASS("_TtC9DankMeets11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class MenuBar;
 @class UICollectionView;
 @class NSIndexPath;
 @class UICollectionViewCell;
@@ -116,9 +117,10 @@ SWIFT_CLASS("_TtC9DankMeets11AppDelegate")
 @class NSCoder;
 
 SWIFT_CLASS("_TtC9DankMeets14HomeController")
-@interface HomeController : UICollectionViewController
+@interface HomeController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 @property (nonatomic, readonly, copy) NSString * __nonnull cellId;
 - (void)viewDidLoad;
+@property (nonatomic, readonly) MenuBar * __nonnull menuBar;
 - (void)setupCollectionView;
 - (NSInteger)collectionView:(UICollectionView * __nonnull)collectionView numberOfItemsInSection:(NSInteger)section;
 - (UICollectionViewCell * __nonnull)collectionView:(UICollectionView * __nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * __nonnull)indexPath;
@@ -126,6 +128,18 @@ SWIFT_CLASS("_TtC9DankMeets14HomeController")
 - (nonnull instancetype)initWithCollectionViewLayout:(UICollectionViewLayout * __nonnull)layout OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9DankMeets7MenuBar")
+@interface MenuBar : UIView
+@property (nonatomic, readonly) UICollectionView * __nonnull collectionView;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface UIView (SWIFT_EXTENSION(DankMeets))
 @end
 
 #pragma clang diagnostic pop
