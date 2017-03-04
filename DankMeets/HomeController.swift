@@ -26,8 +26,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 	
 	private func setupMenuBar(){
 		view.addSubview(menuBar)
-//		view.addConstraintsWithFormat("H:|[v0]|", views: menuBar)
-//		view.addConstraintsWithFormat("V:|[v0(50)]", views: menuBar)
+		view.addConstraintsWithFormat("H:|[v0]|", views: menuBar)
+		view.addConstraintsWithFormat("V:|[v0(50)]", views: menuBar)
 	}
 	
 	func setupCollectionView(){
@@ -40,8 +40,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 		
 		collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
 		
-//		collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
-//		collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
+		collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
+		collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
 		
 		collectionView?.pagingEnabled = true
 	}
@@ -70,7 +70,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
 extension UIView {
 	
-	func addConstraints(withFormat format: String, views: UIView...) {
+	func addConstraintsWithFormat(format: String, views: UIView...) {
 		var viewsDictionary = [String: UIView]()
 		for (index, view) in views.enumerate() {
 			let key = "v\(index)"

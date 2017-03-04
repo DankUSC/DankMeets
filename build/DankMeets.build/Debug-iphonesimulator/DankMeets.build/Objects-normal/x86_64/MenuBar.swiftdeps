@@ -9,14 +9,14 @@ provides-dynamic-lookup:
 - "collectionView"
 depends-top-level:
 - "MenuBar"
-- !private "fatalError"
-- "CGRect"
-- "NSCoder"
 - "UIView"
+- "UICollectionView"
+- !private "StringLiteralType"
+- "NSCoder"
+- "CGRect"
+- !private "fatalError"
 - "UIColor"
 - "UICollectionViewFlowLayout"
-- !private "StringLiteralType"
-- "UICollectionView"
 depends-member:
 - ["PSs9AnyObject", "UICollectionView"]
 - ["PSs9AnyObject", "UICollectionViewFlowLayout"]
