@@ -132,10 +132,13 @@ SWIFT_CLASS("_TtC9DankMeets14HomeController")
 
 
 SWIFT_CLASS("_TtC9DankMeets7MenuBar")
-@interface MenuBar : UIView
-@property (nonatomic, readonly) UICollectionView * __nonnull collectionView;
+@interface MenuBar : UIView <UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
+@property (nonatomic) UICollectionView * __nonnull collectionView;
+@property (nonatomic, readonly, copy) NSString * __nonnull cellId;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (NSInteger)collectionView:(UICollectionView * __nonnull)collectionView numberOfItemsInSection:(NSInteger)section;
+- (UICollectionViewCell * __nonnull)collectionView:(UICollectionView * __nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * __nonnull)indexPath;
 @end
 
 

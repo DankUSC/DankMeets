@@ -8,35 +8,35 @@ provides-member:
 - ["CSo6UIView", ""]
 - ["CSo6UIView", "addConstraintsWithFormat"]
 provides-dynamic-lookup:
-- "menuBar"
-- "viewDidLoad"
-- "cellId"
 - "setupCollectionView"
+- "cellId"
+- "viewDidLoad"
+- "menuBar"
 - "collectionView"
 - "collectionView"
 - "collectionView"
 depends-top-level:
+- !private "UIColor"
+- "CGSize"
+- !private "UIEdgeInsetsMake"
+- "StringLiteralType"
+- "UICollectionViewDelegateFlowLayout"
+- "UICollectionViewController"
+- "NSIndexPath"
+- "UIView"
+- !private "CGSizeMake"
+- "String"
+- !private "UnicodeScalarType"
+- "UICollectionViewLayout"
+- !private "UICollectionViewFlowLayout"
+- !private "NSLayoutFormatOptions"
+- "MenuBar"
+- "HomeController"
+- "UICollectionViewCell"
 - !private "BooleanLiteralType"
 - !private "NSLayoutConstraint"
-- !private "UICollectionViewFlowLayout"
-- "Int"
-- "MenuBar"
-- !private "UIEdgeInsetsMake"
-- "HomeController"
 - "UICollectionView"
-- !private "UIColor"
-- "UICollectionViewLayout"
-- "NSIndexPath"
-- "String"
-- "StringLiteralType"
-- !private "CGSizeMake"
-- "UICollectionViewCell"
-- "UICollectionViewController"
-- !private "NSLayoutFormatOptions"
-- "UIView"
-- !private "UnicodeScalarType"
-- "UICollectionViewDelegateFlowLayout"
-- "CGSize"
+- "Int"
 depends-member:
 - !private ["PSs9AnyObject", "CGSizeMake"]
 - ["PSs9AnyObject", "MenuBar"]
@@ -679,6 +679,7 @@ depends-member:
 - !private ["PSo34UICollectionViewDelegateFlowLayout", "UIEdgeInsetsMake"]
 - !private ["PSo34UICollectionViewDelegateFlowLayout", "cellId"]
 - ["PSo34UICollectionViewDelegateFlowLayout", "collectionView"]
+- ["PSo34UICollectionViewDelegateFlowLayout", "init"]
 - !private ["PSo34UICollectionViewDelegateFlowLayout", "menuBar"]
 - !private ["PSo34UICollectionViewDelegateFlowLayout", "setupCollectionView"]
 - !private ["PSo34UICollectionViewDelegateFlowLayout", "setupMenuBar"]
