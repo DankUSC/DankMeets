@@ -14,9 +14,6 @@ class MapPage : Page, MKMapViewDelegate, CLLocationManagerDelegate {
 	
 	var mapView : MKMapView?
 	var locationManager: CLLocationManager?
-    
-	//The range (meter) of how much we want to see arround the user's location
-	let distanceSpan: Double = 500
 	
 	override func setupViews() {
 		super.setupViews()
@@ -41,7 +38,7 @@ class MapPage : Page, MKMapViewDelegate, CLLocationManagerDelegate {
         let location = locations.last! as CLLocation
         
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
         
         self.mapView?.setRegion(region, animated: true)
         self.mapView?.showsUserLocation = true

@@ -22,32 +22,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 		setupCollectionView()
 	}
 	
-	let menuBar : MenuBar = {
-		let mb = MenuBar()
-		return mb
-	}()
-	
-	let profilePage : ProfilePage = {
-		let profilePage = ProfilePage()
-		return profilePage
-	}()
-	
-	let mapPage : MapPage = {
-		let mapPage = MapPage()
-		return mapPage
-	}()
-	
-	let feedPage : FeedPage = {
-		let feedPage = FeedPage()
-		return feedPage
-	}()
-	
-	fileprivate func setupMenuBar(){
-		view.addSubview(menuBar)
-		view.addConstraintsWithFormat("H:|[v0]|", views: menuBar)
-		view.addConstraintsWithFormat("V:|[v0(50)]", views: menuBar)
-	}
-	
 	fileprivate func setupNavigationBar(){
 		navigationItem.title = "DankMeets"
 		navigationController?.navigationBar.isTranslucent = false
@@ -95,10 +69,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 		collectionView?.register(FeedPage.self, forCellWithReuseIdentifier: feedPageId)
 		
 		collectionView?.isPagingEnabled = true
-		
-		collectionView?.addSubview(profilePage)
-		collectionView?.addSubview(mapPage)
-		collectionView?.addSubview(feedPage)
 		
 		scrollToMap()
 	}

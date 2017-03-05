@@ -17,6 +17,7 @@
 		43CDD7411E6BADBB00C32282 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDD7401E6BADBB00C32282 /* ProfilePage.swift */; };
 		43CDD7431E6BADC300C32282 /* MapPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDD7421E6BADC300C32282 /* MapPage.swift */; };
 		43CDD7451E6BADCE00C32282 /* FeedPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDD7441E6BADCE00C32282 /* FeedPage.swift */; };
+		43CDD7491E6BDC7F00C32282 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDD7481E6BDC7F00C32282 /* FeedCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		43CDD7401E6BADBB00C32282 /* ProfilePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
 		43CDD7421E6BADC300C32282 /* MapPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPage.swift; sourceTree = "<group>"; };
 		43CDD7441E6BADCE00C32282 /* FeedPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPage.swift; sourceTree = "<group>"; };
+		43CDD7481E6BDC7F00C32282 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				43CDD7401E6BADBB00C32282 /* ProfilePage.swift */,
 				43CDD7421E6BADC300C32282 /* MapPage.swift */,
 				43CDD7441E6BADCE00C32282 /* FeedPage.swift */,
+				43CDD7481E6BDC7F00C32282 /* FeedCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				43CDD7411E6BADBB00C32282 /* ProfilePage.swift in Sources */,
 				43CDD7431E6BADC300C32282 /* MapPage.swift in Sources */,
 				43CDD7451E6BADCE00C32282 /* FeedPage.swift in Sources */,
+				43CDD7491E6BDC7F00C32282 /* FeedCell.swift in Sources */,
 				43CDD73F1E6BACA600C32282 /* Page.swift in Sources */,
 				431B4E901E6B7C79002D0229 /* MenuBar.swift in Sources */,
 			);
