@@ -8,12 +8,13 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class MapPage : Page, MKMapViewDelegate, CLLocationManagerDelegate {
 	
 	var mapView : MKMapView?
-	
 	var locationManager: CLLocationManager?
+    
 	//The range (meter) of how much we want to see arround the user's location
 	let distanceSpan: Double = 500
 	
@@ -27,19 +28,23 @@ class MapPage : Page, MKMapViewDelegate, CLLocationManagerDelegate {
 		self.locationManager = CLLocationManager()
 		if let locationManager = self.locationManager {
 			locationManager.delegate = self
-			locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+			locationManager.desiredAccuracy = kCLLocationAccuracyBest
 			locationManager.requestAlwaysAuthorization()
-			locationManager.distanceFilter = 50
-			locationManager.startUpdatingLocation()
+//			locationManager.distanceFilter = 50
+            if CLLocationManager.locationServicesEnabled() {
+                locationManager.startUpdatingLocation()
+            }
 		}
 	}
-	
-	func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-		if let mapView = self.mapView {
-			let region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, self.distanceSpan, self.distanceSpan)
-			mapView.setRegion(region, animated: true)
-			mapView.showsUserLocation = true
-		}
-	}
-	
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last! as CLLocation
+        
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        self.mapView?.setRegion(region, animated: true)
+        self.mapView?.showsUserLocation = true
+    }
+
 }
