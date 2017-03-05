@@ -13,5 +13,6 @@ class NearbyItem : NSObject {
 	var user : String?
 	var lat : Double?
 	var lon : Double?
+	var distance : Double?
 	
 }

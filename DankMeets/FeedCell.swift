@@ -113,7 +113,8 @@ class NearbyCell : FeedCell {
 	var nearbyItem: NearbyItem? {
 		didSet {
 			titleLabel.text = nearbyItem?.user
-			locationLabel.text = String((nearbyItem?.lat)!) + ", " + String((nearbyItem?.lon)!)
+//			locationLabel.text = String((nearbyItem?.lat)!) + ", " + String((nearbyItem?.lon)!)
+			locationLabel.text = String(Int((nearbyItem?.distance)!.rounded())) + " meters"
 		}
 	}
 	
@@ -150,34 +151,3 @@ class NearbyCell : FeedCell {
 	}
 	
 }
-
-//class ProfileCell : FeedCell {
-//	
-//	var profileItem : ProfileItem? {
-//		didSet{
-//			let titleText = (profileItem?.first_name)! + "'s Profile Page"
-//			titleLabel.text = titleText
-//			let friendText = profileItem?.friend_count
-//			friendLabel.text = friendText as! String?
-//		}
-//	}
-//	
-//	let friendLabel : UILabel = {
-//		let label = UILabel()
-//		label.translatesAutoresizingMaskIntoConstraints = false
-//		return label
-//	}()
-//	
-//	let titleLabel : UILabel = {
-//		let label = UILabel()
-//		label.translatesAutoresizingMaskIntoConstraints = false
-//		return label
-//	}()
-//	
-//	override func setupViews() {
-//		addSubview(titleLabel)
-//		addSubview(friendLabel)
-//		addConstraintsWithFormat("H:|-16-[v0]-16-|", views: titleLabel)
-//	}
-//	
-//}

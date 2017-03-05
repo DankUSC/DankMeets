@@ -14,6 +14,7 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 	
 	var mapView : MKMapView?
 	var locationManager: CLLocationManager?
+	var myLocation : CLLocationCoordinate2D?
 	
 	let nearbyCellId = "nearbyCellId"
 	
@@ -74,6 +75,7 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 		addConstraintsWithFormat("V:|-320-[v0]-[v1]|", views: nearbyTextLabel, collectionView)
 		
 		createJSONTask()
+		_ = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(createJSONTask), userInfo: nil, repeats: true)
 	}
 	
 	func pinFriends(){
@@ -81,11 +83,19 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 			let annotation = MKPointAnnotation()
 			annotation.coordinate = CLLocationCoordinate2D(latitude: friend.lat!, longitude: friend.lon!)
 			annotation.title = friend.user
-			mapView?.addAnnotation(annotation)
+			let point1 = MKMapPointForCoordinate(annotation.coordinate)
+			let point2 = MKMapPointForCoordinate(myLocation!)
+			friend.distance = MKMetersBetweenMapPoints(point1, point2)
+			if (friend.distance! < 5000.0) {
+				mapView?.addAnnotation(annotation)
+			} else {
+				nearbyItems.remove(at: nearbyItems.index(of: friend)!)
+			}
 		}
 	}
 	
 	func createJSONTask(){
+		nearbyItems.removeAll()
 		
 		//sending http request to server to obtain data
 		let urlString = URL(string: "https://dank-meets.appspot.com/nearby/1")
@@ -126,9 +136,9 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last! as CLLocation
 		
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
-        
+        myLocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: myLocation!, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+		
         self.mapView?.setRegion(region, animated: true)
         self.mapView?.showsUserLocation = true
 		
