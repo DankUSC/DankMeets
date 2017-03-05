@@ -49,6 +49,10 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 		collectionView.register(NearbyCell.self, forCellWithReuseIdentifier: nearbyCellId)
 		
 		mapView = MKMapView(frame: CGRect(x:20, y:20, width: frame.width-40, height: 280))
+		mapView?.layer.borderWidth = 2
+		mapView?.layer.borderColor = UIColor.black.cgColor
+		mapView?.layer.cornerRadius = 20
+		
 		addSubview(mapView!)
 		addSubview(nearbyTextLabel)
 		addSubview(collectionView)
@@ -68,6 +72,11 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 		addConstraintsWithFormat("H:|[v0]|", views: collectionView)
 		addConstraintsWithFormat("H:|-20-[v0]|", views: nearbyTextLabel)
 		addConstraintsWithFormat("V:|-320-[v0]-[v1]|", views: nearbyTextLabel, collectionView)
+		
+		createJSONTask()
+	}
+	
+	func createJSONTask(){
 		
 		//sending http request to server to obtain data
 		let urlString = URL(string: "https://dank-meets.appspot.com/nearby/1")
@@ -101,6 +110,7 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 			}
 			task.resume()
 		}
+		
 	}
 	
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -122,6 +132,7 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 					print(error!)
 				}
 			}
+			task.resume()
 		}
 	}
 	

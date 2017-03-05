@@ -64,6 +64,11 @@ class MeetCell : FeedCell {
 	let selfieImageView : UIImageView = {
 		let imageView = UIImageView()
 		imageView.backgroundColor = UIColor.white
+		imageView.layer.borderWidth = 2
+		imageView.layer.masksToBounds = false
+		imageView.layer.borderColor = UIColor.black.cgColor
+		imageView.layer.cornerRadius = 20
+		imageView.clipsToBounds = true
 		return imageView
 	}()
 	
@@ -81,6 +86,7 @@ class MeetCell : FeedCell {
 	}()
 	
 	override func setupViews() {
+		super.setupViews()
 		addSubview(selfieImageView)
 		addSubview(messageLabel)
 		addSubview(separatorView)
@@ -88,7 +94,7 @@ class MeetCell : FeedCell {
 		addConstraintsWithFormat("H:|-16-[v0]-16-|", views: messageLabel)
 		addConstraintsWithFormat("H:|-16-[v0]-16-|", views: selfieImageView)
 		addConstraintsWithFormat("V:|-16-[v0]-[v1(24)]-16-[v2(2)]|", views: selfieImageView, messageLabel, separatorView)
-		addConstraintsWithFormat("H:|[v0]|", views: separatorView)
+		addConstraintsWithFormat("H:|-16-[v0]-16-|", views: separatorView)
 	}
 	
 }
@@ -145,33 +151,33 @@ class NearbyCell : FeedCell {
 	
 }
 
-class ProfileCell : FeedCell {
-	
-	var profileItem : ProfileItem? {
-		didSet{
-			let titleText = (profileItem?.fname)! + "'s Profile Page"
-			titleLabel.text = titleText
-			let friendText = profileItem?.friend_count
-			friendLabel.text = friendText as! String?
-		}
-	}
-	
-	let friendLabel : UILabel = {
-		let label = UILabel()
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
-	}()
-	
-	let titleLabel : UILabel = {
-		let label = UILabel()
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
-	}()
-	
-	override func setupViews() {
-		addSubview(titleLabel)
-		addSubview(friendLabel)
-		addConstraintsWithFormat("H:|-16-[v0]-16-|", views: titleLabel)
-	}
-	
-}
+//class ProfileCell : FeedCell {
+//	
+//	var profileItem : ProfileItem? {
+//		didSet{
+//			let titleText = (profileItem?.first_name)! + "'s Profile Page"
+//			titleLabel.text = titleText
+//			let friendText = profileItem?.friend_count
+//			friendLabel.text = friendText as! String?
+//		}
+//	}
+//	
+//	let friendLabel : UILabel = {
+//		let label = UILabel()
+//		label.translatesAutoresizingMaskIntoConstraints = false
+//		return label
+//	}()
+//	
+//	let titleLabel : UILabel = {
+//		let label = UILabel()
+//		label.translatesAutoresizingMaskIntoConstraints = false
+//		return label
+//	}()
+//	
+//	override func setupViews() {
+//		addSubview(titleLabel)
+//		addSubview(friendLabel)
+//		addConstraintsWithFormat("H:|-16-[v0]-16-|", views: titleLabel)
+//	}
+//	
+//}

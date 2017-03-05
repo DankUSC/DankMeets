@@ -28,9 +28,3 @@ class EventItem: FeedItem {
 	var username : String?
 	
 }
-
-class ProfileItem: NSObject{
-    var friend_count : Any?
-    var fname : String?
-    var lname : String?
-}

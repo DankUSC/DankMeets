@@ -29,7 +29,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 		titleLabel.text = "DankMeets"
 		titleLabel.textAlignment = NSTextAlignment.center
 		titleLabel.textColor = UIColor.black
-		titleLabel.center = view.center
 		
 		let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(scrollToMap))
 		tapGesture.numberOfTapsRequired = 1

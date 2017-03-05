@@ -52,20 +52,25 @@ class FeedPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UIC
 		addConstraintsWithFormat("H:|[v0]|", views: collectionView)
 		addConstraintsWithFormat("V:|[v0]|", views: collectionView)
 		
-        //sending http request to server to obtain data
-        let urlString = URL(string: "https://dank-meets.appspot.com/friends/1")
-        if let url = urlString {
-            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if error != nil {
-                    print(error!)
-                }
-                else{
-                    if let usableData = data{
-                        do{
-                            let json = try JSONSerialization.jsonObject(with: usableData, options: [])
+		createJSONTask()
+	}
+	
+	func createJSONTask(){
+		
+		//sending http request to server to obtain data
+		let urlString = URL(string: "https://dank-meets.appspot.com/friends/1")
+		if let url = urlString {
+			let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+				if error != nil {
+					print(error!)
+				}
+				else{
+					if let usableData = data{
+						do{
+							let json = try JSONSerialization.jsonObject(with: usableData, options: [])
 							let dateFormatter = DateFormatter()
 							dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                            for anItem in json as! [Dictionary<String, Any>] {
+							for anItem in json as! [Dictionary<String, Any>] {
 								let meetItem = MeetItem()
 								let timeStr = anItem["timestamp"] as? String
 								meetItem.time = dateFormatter.date(from: timeStr!)
@@ -74,20 +79,21 @@ class FeedPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UIC
 								meetItem.username2 = anItem["user2"] as? String
 								meetItem.selfieURL = anItem["selfie"] as? String
 								self.feedItems.append(meetItem)
-                            }
+							}
 							
 							DispatchQueue.main.async(execute: {
 								self.collectionView.reloadData()
 							})
 							
-                        } catch{
-                            print("JSON error")
-                        }
-                    }
-                }
-            }
-            task.resume()
-        }
+						} catch{
+							print("JSON error")
+						}
+					}
+				}
+			}
+			task.resume()
+		}
+		
 	}
 	
 	public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
