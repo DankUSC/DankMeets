@@ -24,3 +24,15 @@ class FeedCell : UICollectionViewCell {
 	}
 	
 }
+
+class MeetCell : FeedCell {
+	
+	
+	
+}
+
+class EventCell : FeedCell {
+
+	
+	
+}

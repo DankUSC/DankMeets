@@ -8,9 +8,10 @@
 
 import UIKit
 
-class FeedPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class FeedPage : Page, UICollectionViewDataSource, UICollectionViewDelegate {
 	
-	let cellId = "cellId"
+	let meetCellId = "meetCellId"
+	let eventCellId = "eventCellId"
 	
 	lazy var collectionView : UICollectionView = {
 		let layout = UICollectionViewFlowLayout()
@@ -22,20 +23,35 @@ class FeedPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UIC
 	}()
 	
 	override func setupViews() {
-		collectionView.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
+		collectionView.register(MeetCell.self, forCellWithReuseIdentifier: meetCellId)
+		collectionView.register(EventCell.self, forCellWithReuseIdentifier: eventCellId)
 		
 		addSubview(collectionView)
 		addConstraintsWithFormat("H:|[v0]|", views: collectionView)
 		addConstraintsWithFormat("V:|[v0]|", views: collectionView)
 	}
 	
+	var feedItems: [FeedItem] = {
+		var meeting = MeetItem()
+		meeting.time = NSDate()
+		meeting.username1 = "ldkge"
+		meeting.username2 = "okdmrz"
+		meeting.selfie = "https://i1.wp.com/slyoyster.com/wp-content/uploads/2014/04/Ortiz-and-Obama-Selfie-2.jpg"
+		
+		var event = EventItem()
+		event.time = NSDate()
+		event.username = "okdmrz"
+		event.event = "The Oscars"
+		
+		return [meeting, event]
+	}()
 	
 	public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 3
+		return feedItems.count
 	}
 	
 	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: eventCellId, for: indexPath)
 		
 		return cell
 	}
