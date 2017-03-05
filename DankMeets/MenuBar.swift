@@ -13,7 +13,7 @@ class MenuBar : UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
 	lazy var collectionView : UICollectionView = {
 		let layout = UICollectionViewFlowLayout()
 		let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-		cv.backgroundColor = UIColor.redColor()
+		cv.backgroundColor = UIColor.red
 		cv.dataSource = self
 		cv.delegate = self
 		return cv
@@ -25,7 +25,7 @@ class MenuBar : UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
 	override init(frame: CGRect) {
 		super.init(frame : frame)
 		
-		collectionView.registerClass(MenuCell.self, forCellWithReuseIdentifier: cellId)
+		collectionView.register(MenuCell.self, forCellWithReuseIdentifier: cellId)
 		
 //		let titleLabel = UILabel(frame: CGRectMake(0, 0, frame.width - 32, frame.height))
 //		titleLabel.text = "DankMeets"
@@ -37,23 +37,23 @@ class MenuBar : UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
 		addConstraintsWithFormat("V:|[v0]|", views: collectionView)
 	}
 	
-	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return 3
 	}
 	
-	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath)
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
 		
-		cell.backgroundColor = UIColor.blueColor()
+		cell.backgroundColor = UIColor.blue
 		
 		return cell
 	}
 
-	func collectionView(collectionView: UICollectionView, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-		return CGSizeMake(frame.width / 4, frame.height)
+	private func collectionView(_ collectionView: UICollectionView, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+		return CGSize(width: frame.width / 4, height: frame.height)
 	}
 
-	func collectionView(collectionView: UICollectionView, minimumInteritemSpacingForSectionAtIndex indexPath: NSIndexPath) -> CGFloat {
+	func collectionView(_ collectionView: UICollectionView, minimumInteritemSpacingForSectionAtIndex indexPath: IndexPath) -> CGFloat {
 		return 0
 	}
 
@@ -81,8 +81,8 @@ class MenuCell : UICollectionViewCell {
 		addConstraintsWithFormat("H:[v0(28)]", views: imageView)
 		addConstraintsWithFormat("V:[v0(28)]", views: imageView)
 
-		addConstraint(NSLayoutConstraint(item: imageView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1, constant: 0))
-		addConstraint(NSLayoutConstraint(item: imageView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 0))
+		addConstraint(NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
+		addConstraint(NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
 	}
 
 	required init?(coder aDecoder: NSCoder) {
