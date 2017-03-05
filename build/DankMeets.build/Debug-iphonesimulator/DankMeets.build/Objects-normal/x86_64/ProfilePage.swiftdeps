@@ -7,8 +7,8 @@ provides-member:
 - ["C9DankMeets11ProfilePage", ""]
 provides-dynamic-lookup:
 depends-top-level:
-- "ProfilePage"
 - "Page"
+- "ProfilePage"
 depends-member:
 - !private ["Ps9AnyObject", "init"]
 - ["Ps9AnyObject", ""]

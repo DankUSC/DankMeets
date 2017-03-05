@@ -118,6 +118,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import UIKit;
 @import CoreGraphics;
 @import Foundation;
+@import CoreLocation;
+@import MapKit;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -163,6 +165,9 @@ SWIFT_CLASS("_TtC9DankMeets8FeedPage")
 SWIFT_CLASS("_TtC9DankMeets14HomeController")
 @interface HomeController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 @property (nonatomic, readonly, copy) NSString * _Nonnull cellId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull profilePageId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull mapPageId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull feedPageId;
 - (void)viewDidLoad;
 @property (nonatomic, readonly, strong) MenuBar * _Nonnull menuBar;
 @property (nonatomic, readonly, strong) ProfilePage * _Nonnull profilePage;
@@ -180,9 +185,17 @@ SWIFT_CLASS("_TtC9DankMeets14HomeController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class MKMapView;
+@class CLLocationManager;
+@class CLLocation;
 
 SWIFT_CLASS("_TtC9DankMeets7MapPage")
-@interface MapPage : Page
+@interface MapPage : Page <CLLocationManagerDelegate, MKMapViewDelegate>
+@property (nonatomic, strong) MKMapView * _Nullable mapView;
+@property (nonatomic, strong) CLLocationManager * _Nullable locationManager;
+@property (nonatomic, readonly) double distanceSpan;
+- (void)setupViews;
+- (void)locationManagerWithManager:(CLLocationManager * _Nonnull)manager didUpdateToLocation:(CLLocation * _Nonnull)newLocation fromLocation:(CLLocation * _Nonnull)oldLocation;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
