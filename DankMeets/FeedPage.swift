@@ -58,7 +58,6 @@ class FeedPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UIC
                     if let usableData = data{
                         do{
                             let json = try JSONSerialization.jsonObject(with: usableData, options: [])
-                            print(json)
 							let dateFormatter = DateFormatter()
 							dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                             for anItem in json as! [Dictionary<String, Any>] {
