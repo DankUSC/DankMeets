@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-import CoreLocation
+//import CoreLocation
 
 class MapPage : Page, MKMapViewDelegate, CLLocationManagerDelegate {
 	
@@ -18,7 +18,7 @@ class MapPage : Page, MKMapViewDelegate, CLLocationManagerDelegate {
 	override func setupViews() {
 		super.setupViews()
 		
-		mapView = MKMapView(frame: CGRect(x:20, y:50, width: frame.width-40, height: frame.width-100))
+		mapView = MKMapView(frame: CGRect(x:20, y:20, width: frame.width-40, height: frame.width-100))
 		addSubview(mapView!)
 		
 		//getting permissions to display your location on the map

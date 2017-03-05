@@ -10,7 +10,8 @@ import UIKit
 
 class FeedItem: NSObject {
 	
-	var time : NSDate?
+	var time : Date?
+	var event : String?
 	
 }
 
@@ -18,13 +19,12 @@ class MeetItem: FeedItem {
 	
 	var username1 : String?
 	var username2 : String?
-	var selfie : String?
+	var selfieURL : String?
 	
 }
 
 class EventItem: FeedItem {
 	
 	var username : String?
-	var event : String?
 	
 }

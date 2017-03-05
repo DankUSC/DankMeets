@@ -19,6 +19,7 @@
 		43CDD7451E6BADCE00C32282 /* FeedPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDD7441E6BADCE00C32282 /* FeedPage.swift */; };
 		43CDD7491E6BDC7F00C32282 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDD7481E6BDC7F00C32282 /* FeedCell.swift */; };
 		43CDD74B1E6BE4A700C32282 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDD74A1E6BE4A700C32282 /* FeedItem.swift */; };
+		43CDD74E1E6C35FC00C32282 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDD74D1E6C35FC00C32282 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		43CDD7441E6BADCE00C32282 /* FeedPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPage.swift; sourceTree = "<group>"; };
 		43CDD7481E6BDC7F00C32282 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		43CDD74A1E6BE4A700C32282 /* FeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
+		43CDD74D1E6C35FC00C32282 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				431B4E8C1E6B764B002D0229 /* Model */,
 				431B4E8E1E6B7655002D0229 /* View */,
 				431B4E8D1E6B7650002D0229 /* Controller */,
+				43CDD74C1E6C35E500C32282 /* Helpers */,
 				431B4E7A1E6B7617002D0229 /* AppDelegate.swift */,
 				431B4E7E1E6B7617002D0229 /* Main.storyboard */,
 				431B4E811E6B7617002D0229 /* Assets.xcassets */,
@@ -107,6 +110,14 @@
 				43CDD7481E6BDC7F00C32282 /* FeedCell.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		43CDD74C1E6C35E500C32282 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				43CDD74D1E6C35FC00C32282 /* Extensions.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +197,7 @@
 				43CDD7411E6BADBB00C32282 /* ProfilePage.swift in Sources */,
 				43CDD7431E6BADC300C32282 /* MapPage.swift in Sources */,
 				43CDD7451E6BADCE00C32282 /* FeedPage.swift in Sources */,
+				43CDD74E1E6C35FC00C32282 /* Extensions.swift in Sources */,
 				43CDD74B1E6BE4A700C32282 /* FeedItem.swift in Sources */,
 				43CDD7491E6BDC7F00C32282 /* FeedCell.swift in Sources */,
 				43CDD73F1E6BACA600C32282 /* Page.swift in Sources */,
@@ -305,7 +317,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VGW7885AUD;
 				INFOPLIST_FILE = DankMeets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.okd.DankMeets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -317,7 +331,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VGW7885AUD;
 				INFOPLIST_FILE = DankMeets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.okd.DankMeets;
 				PRODUCT_NAME = "$(TARGET_NAME)";

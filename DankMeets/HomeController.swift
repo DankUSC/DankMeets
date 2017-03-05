@@ -10,7 +10,6 @@ import UIKit
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 	
-	let cellId = "cellId"
 	let profilePageId = "profilePageId"
 	let mapPageId = "mapPageId"
 	let feedPageId = "feedPageId"
@@ -63,29 +62,28 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 		
 		collectionView?.backgroundColor = UIColor.white
 		
-		collectionView?.register(Page.self, forCellWithReuseIdentifier: cellId)
 		collectionView?.register(ProfilePage.self, forCellWithReuseIdentifier: profilePageId)
 		collectionView?.register(MapPage.self, forCellWithReuseIdentifier: mapPageId)
 		collectionView?.register(FeedPage.self, forCellWithReuseIdentifier: feedPageId)
 		
 		collectionView?.isPagingEnabled = true
-		
-		scrollToMap()
 	}
 	
 	func scrollToProfile(){
-		let indexPath = IndexPath(item: 0, section: 0)
-		collectionView?.scrollToItem(at: indexPath, at: [], animated: true)
+		scrollToMenuIndex(menuIndex: 0, animated: true)
 	}
 	
 	func scrollToMap(){
-		let indexPath = IndexPath(item: 1, section: 0)
-		collectionView?.scrollToItem(at: indexPath, at: [], animated: true)
+		scrollToMenuIndex(menuIndex: 1, animated: true)
 	}
 	
 	func scrollToFeed(){
-		let indexPath = IndexPath(item: 2, section: 0)
-		collectionView?.scrollToItem(at: indexPath, at: [], animated: true)
+		scrollToMenuIndex(menuIndex: 2, animated: true)
+	}
+	
+	func scrollToMenuIndex(menuIndex : Int, animated : Bool){
+		let indexPath = IndexPath(item: menuIndex, section: 0)
+		collectionView?.scrollToItem(at: indexPath, at: [], animated: animated)
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -100,36 +98,16 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 			return collectionView.dequeueReusableCell(withReuseIdentifier: mapPageId, for: indexPath)
 		} else if indexPath.item == 2 {
 			return collectionView.dequeueReusableCell(withReuseIdentifier: feedPageId, for: indexPath)
+		} else {
+			print("ERROR: Unexpected page ID, showing Home.")
+			return collectionView.dequeueReusableCell(withReuseIdentifier: mapPageId, for: indexPath)
 		}
-		
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-		
-		let colors: [UIColor] = [.blue, .white, .red]
-		
-		cell.backgroundColor = colors[indexPath.item]
-		
-		return cell
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: view.frame.width, height: view.frame.height)
+		return CGSize(width: view.frame.width, height: view.frame.height/*-64*/)
 	}
 	
-	
-}
-
-extension UIView {
-	
-	func addConstraintsWithFormat(_ format: String, views: UIView...) {
-		var viewsDictionary = [String: UIView]()
-		for (index, view) in views.enumerated() {
-			let key = "v\(index)"
-			view.translatesAutoresizingMaskIntoConstraints = false
-			viewsDictionary[key] = view
-		}
-		
-		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
-	}
 	
 }
 
