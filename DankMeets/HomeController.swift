@@ -34,7 +34,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 		tapGesture.numberOfTapsRequired = 1
 		titleLabel.isUserInteractionEnabled =  true
 		titleLabel.addGestureRecognizer(tapGesture)
-		titleLabel.font = UIFont.systemFont(ofSize: 20)
+		titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
 		navigationItem.titleView = titleLabel
 		
 		let profileButton = UIButton(type: .custom)
@@ -58,7 +58,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 			flowLayout.scrollDirection = .horizontal
 			flowLayout.minimumLineSpacing = 0
 		}
-		
+		collectionView?.indicatorStyle = UIScrollViewIndicatorStyle.black
+		collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, view.frame.height - 70, 0)
 		collectionView?.backgroundColor = UIColor.white
 		
 		collectionView?.register(ProfilePage.self, forCellWithReuseIdentifier: profilePageId)
@@ -83,6 +84,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 	func scrollToMenuIndex(menuIndex : Int, animated : Bool){
 		let indexPath = IndexPath(item: menuIndex, section: 0)
 		collectionView?.scrollToItem(at: indexPath, at: [], animated: animated)
+		collectionView?.flashScrollIndicators()
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
