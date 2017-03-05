@@ -116,8 +116,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
-@import Foundation;
 @import CoreGraphics;
+@import Foundation;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -137,24 +137,53 @@ SWIFT_CLASS("_TtC9DankMeets11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSCoder;
+
+SWIFT_CLASS("_TtC9DankMeets4Page")
+@interface Page : UICollectionViewCell
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (void)setupViews;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9DankMeets8FeedPage")
+@interface FeedPage : Page
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class MenuBar;
+@class ProfilePage;
+@class MapPage;
 @class UICollectionView;
-@class UICollectionViewCell;
 @class UICollectionViewLayout;
 @class NSBundle;
-@class NSCoder;
 
 SWIFT_CLASS("_TtC9DankMeets14HomeController")
 @interface HomeController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 @property (nonatomic, readonly, copy) NSString * _Nonnull cellId;
 - (void)viewDidLoad;
 @property (nonatomic, readonly, strong) MenuBar * _Nonnull menuBar;
+@property (nonatomic, readonly, strong) ProfilePage * _Nonnull profilePage;
+@property (nonatomic, readonly, strong) MapPage * _Nonnull mapPage;
+@property (nonatomic, readonly, strong) FeedPage * _Nonnull feedPage;
 - (void)setupCollectionView;
+- (void)scrollToProfile;
+- (void)scrollToMap;
+- (void)scrollToFeed;
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (nonnull instancetype)initWithCollectionViewLayout:(UICollectionViewLayout * _Nonnull)layout OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9DankMeets7MapPage")
+@interface MapPage : Page
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -178,6 +207,14 @@ SWIFT_CLASS("_TtC9DankMeets8MenuCell")
 @property (nonatomic, readonly, strong) UIImageView * _Nonnull imageView;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (void)setupViews;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+SWIFT_CLASS("_TtC9DankMeets11ProfilePage")
+@interface ProfilePage : Page
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 

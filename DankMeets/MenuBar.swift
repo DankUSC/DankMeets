@@ -26,12 +26,7 @@ class MenuBar : UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
 		super.init(frame : frame)
 		
 		collectionView.register(MenuCell.self, forCellWithReuseIdentifier: cellId)
-		
-//		let titleLabel = UILabel(frame: CGRectMake(0, 0, frame.width - 32, frame.height))
-//		titleLabel.text = "DankMeets"
-//		titleLabel.textColor = UIColor.blackColor()
-//		titleLabel.font = UIFont.systemFontOfSize(20)
-		
+				
 		addSubview(collectionView)
 		addConstraintsWithFormat("H:|[v0]|", views: collectionView)
 		addConstraintsWithFormat("V:|[v0]|", views: collectionView)

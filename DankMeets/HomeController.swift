@@ -22,8 +22,10 @@ class HomeController: UICollectionViewController, MKMapViewDelegate, UICollectio
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
+		setupNavigationBar()
 		setupCollectionView()
+<<<<<<< Updated upstream
 		setupMenuBar()
         
         //setting up map
@@ -43,6 +45,8 @@ class HomeController: UICollectionViewController, MKMapViewDelegate, UICollectio
             locationManager.startUpdatingLocation()
         }
         
+=======
+>>>>>>> Stashed changes
 	}
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
@@ -58,10 +62,58 @@ class HomeController: UICollectionViewController, MKMapViewDelegate, UICollectio
 		return mb
 	}()
 	
+	let profilePage : ProfilePage = {
+		let profilePage = ProfilePage()
+		return profilePage
+	}()
+	
+	let mapPage : MapPage = {
+		let mapPage = MapPage()
+		return mapPage
+	}()
+	
+	let feedPage : FeedPage = {
+		let feedPage = FeedPage()
+		return feedPage
+	}()
+	
 	fileprivate func setupMenuBar(){
 		view.addSubview(menuBar)
 		view.addConstraintsWithFormat("H:|[v0]|", views: menuBar)
 		view.addConstraintsWithFormat("V:|[v0(50)]", views: menuBar)
+	}
+	
+	fileprivate func setupNavigationBar(){
+		navigationItem.title = "DankMeets"
+		navigationController?.navigationBar.isTranslucent = false
+		
+		let titleLabel = UILabel(frame: CGRect(x: view.frame.width/2, y:0, width:view.frame.width - 32, height:view.frame.height))
+		titleLabel.text = "DankMeets"
+		titleLabel.textColor = UIColor.black
+		titleLabel.center = view.center
+		titleLabel.target(forAction: #selector(scrollToMap), withSender: [])
+		
+		let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(scrollToMap))
+		tapGesture.numberOfTapsRequired = 1
+		titleLabel.isUserInteractionEnabled =  true
+		titleLabel.addGestureRecognizer(tapGesture)
+		titleLabel.font = UIFont.systemFont(ofSize: 20)
+		navigationItem.titleView = titleLabel
+		
+		let profileButton = UIButton(type: .custom)
+		profileButton.setImage(#imageLiteral(resourceName: "profile"), for: .normal)
+		profileButton.frame = CGRect(x:0, y:0, width:30, height:30)
+		profileButton.addTarget(self, action: #selector(scrollToProfile), for: .touchUpInside)
+		let profileItem = UIBarButtonItem(customView: profileButton)
+		
+		let feedButton = UIButton(type: .custom)
+		feedButton.setImage(#imageLiteral(resourceName: "feed"), for: .normal)
+		feedButton.frame = CGRect(x:0, y:0, width:30, height:30)
+		feedButton.addTarget(self, action: #selector(scrollToFeed), for: .touchUpInside)
+		let feedItem = UIBarButtonItem(customView: feedButton)
+		
+		navigationItem.setLeftBarButton(profileItem, animated: false)
+		navigationItem.setRightBarButton(feedItem, animated: false)
 	}
 	
 	func setupCollectionView(){
@@ -72,12 +124,31 @@ class HomeController: UICollectionViewController, MKMapViewDelegate, UICollectio
 		
 		collectionView?.backgroundColor = UIColor.white
 		
-		collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-		
-		collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
-		collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
+		collectionView?.register(Page.self, forCellWithReuseIdentifier: cellId)
 		
 		collectionView?.isPagingEnabled = true
+		
+		collectionView?.addSubview(profilePage)
+		collectionView?.addSubview(mapPage)
+		collectionView?.addSubview(feedPage)
+		
+//		collectionView?.contentOffset = CGPoint(x: view.frame.width, y: 0)
+		scrollToMap()
+	}
+	
+	func scrollToProfile(){
+		let indexPath = IndexPath(item: 0, section: 0)
+		collectionView?.scrollToItem(at: indexPath, at: [], animated: true)
+	}
+	
+	func scrollToMap(){
+		let indexPath = IndexPath(item: 1, section: 0)
+		collectionView?.scrollToItem(at: indexPath, at: [], animated: true)
+	}
+	
+	func scrollToFeed(){
+		let indexPath = IndexPath(item: 2, section: 0)
+		collectionView?.scrollToItem(at: indexPath, at: [], animated: true)
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

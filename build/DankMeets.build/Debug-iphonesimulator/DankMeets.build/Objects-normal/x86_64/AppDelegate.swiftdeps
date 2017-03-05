@@ -6,29 +6,29 @@ provides-nominal:
 provides-member:
 - ["C9DankMeets11AppDelegate", ""]
 provides-dynamic-lookup:
-- "applicationWillResignActive"
+- "application"
+- "applicationDidBecomeActive"
 - "applicationWillTerminate"
 - "window"
-- "applicationDidBecomeActive"
-- "application"
 - "applicationWillEnterForeground"
 - "applicationDidEnterBackground"
+- "applicationWillResignActive"
 depends-top-level:
-- !private "UINavigationController"
-- "UIApplicationDelegate"
 - "UIApplication"
-- "UIResponder"
-- "UIApplicationLaunchOptionsKey"
+- "AssignmentPrecedence"
+- !private "UINavigationController"
+- !private "UINavigationBar"
+- "UIWindow"
+- "UIApplicationDelegate"
+- !private "HomeController"
+- !private "BooleanLiteralType"
 - !private "UIScreen"
 - !private "UICollectionViewFlowLayout"
-- !private "BooleanLiteralType"
+- "UIApplicationLaunchOptionsKey"
 - "AppDelegate"
-- !private "UINavigationBar"
-- !private "HomeController"
 - !private "UIImage"
-- "UIWindow"
 - "Bool"
-- "AssignmentPrecedence"
+- "UIResponder"
 depends-member:
 - !private ["Ps9AnyObject", "HomeController"]
 - !private ["Ps9AnyObject", "UICollectionViewFlowLayout"]

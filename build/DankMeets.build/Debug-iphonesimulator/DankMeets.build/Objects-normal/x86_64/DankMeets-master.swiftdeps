@@ -1,7 +1,11 @@
 version: "Apple Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)"
 options: "49b237459a3324571e6939a70b677488"
-build_time: [541990579, 528133000]
+build_time: [541996189, 238039000]
 inputs:
-  "/Users/OKD/Documents/Xcode/DankMeets/DankMeets/HomeController.swift": [541990577, 0]
-  "/Users/OKD/Documents/Xcode/DankMeets/DankMeets/AppDelegate.swift": [541990365, 0]
-  "/Users/OKD/Documents/Xcode/DankMeets/DankMeets/MenuBar.swift": [541990579, 0]
+  "/Users/OKD/Documents/Xcode/DankMeets/DankMeets/HomeController.swift": !dirty [541996186, 0]
+  "/Users/OKD/Documents/Xcode/DankMeets/DankMeets/AppDelegate.swift": !dirty [541990365, 0]
+  "/Users/OKD/Documents/Xcode/DankMeets/DankMeets/ProfilePage.swift": !private [541996186, 0]
+  "/Users/OKD/Documents/Xcode/DankMeets/DankMeets/MapPage.swift": !private [541996186, 0]
+  "/Users/OKD/Documents/Xcode/DankMeets/DankMeets/FeedPage.swift": !private [541996186, 0]
+  "/Users/OKD/Documents/Xcode/DankMeets/DankMeets/Page.swift": !private [541996186, 0]
+  "/Users/OKD/Documents/Xcode/DankMeets/DankMeets/MenuBar.swift": !dirty [541996186, 0]
