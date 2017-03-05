@@ -16,7 +16,7 @@ class FeedPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UIC
 	lazy var collectionView : UICollectionView = {
 		let layout = UICollectionViewFlowLayout()
 		let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-		cv.backgroundColor = UIColor.gray
+		cv.backgroundColor = UIColor.white
 		cv.dataSource = self
 		cv.delegate = self
 		return cv
@@ -40,6 +40,11 @@ class FeedPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UIC
 	}()
 	
 	override func setupViews() {
+		super.setupViews()
+		
+		if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+			flowLayout.minimumLineSpacing = 0
+		}
 		collectionView.register(MeetCell.self, forCellWithReuseIdentifier: meetCellId)
 		collectionView.register(EventCell.self, forCellWithReuseIdentifier: eventCellId)
 		
@@ -61,8 +66,6 @@ class FeedPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UIC
 							let dateFormatter = DateFormatter()
 							dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                             for anItem in json as! [Dictionary<String, Any>] {
-                                print(anItem["user1"]!)
-                                print(anItem["user2"]!)
 								let meetItem = MeetItem()
 								let timeStr = anItem["timestamp"] as? String
 								meetItem.time = dateFormatter.date(from: timeStr!)
@@ -100,7 +103,7 @@ class FeedPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UIC
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: frame.width, height: frame.height)
+		return CGSize(width: frame.width, height: 400)
 	}
 	
 	
