@@ -132,15 +132,46 @@ class NearbyCell : FeedCell {
 	}()
 	
 	override func setupViews(){
+		addSubview(separatorView)
 		addSubview(titleLabel)
 		addSubview(locationLabel)
-		addSubview(separatorView)
 		
 		addConstraintsWithFormat("H:|-20-[v0]-[v1]-20-|", views: titleLabel, locationLabel)
-		addConstraintsWithFormat("V:|-8-[v0(32)]-8-[v1(2)]", views: titleLabel, separatorView)
+		addConstraintsWithFormat("V:|[v0(1)]-14-[v1]", views: separatorView, titleLabel)
 		addConstraintsWithFormat("H:|-16-[v0]-16-|", views: separatorView)
 		addConstraint(NSLayoutConstraint(item: locationLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .top, multiplier: 1, constant: 0))
 		addConstraint(NSLayoutConstraint(item: locationLabel, attribute: .bottom, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 0))
+	}
+	
+}
+
+class ProfileCell : FeedCell {
+	
+	var profileItem : ProfileItem? {
+		didSet{
+			let titleText = (profileItem?.fname)! + "'s Profile Page"
+			titleLabel.text = titleText
+			let friendText = profileItem?.friend_count
+			friendLabel.text = friendText as! String?
+		}
+	}
+	
+	let friendLabel : UILabel = {
+		let label = UILabel()
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+	
+	let titleLabel : UILabel = {
+		let label = UILabel()
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+	
+	override func setupViews() {
+		addSubview(titleLabel)
+		addSubview(friendLabel)
+		addConstraintsWithFormat("H:|-16-[v0]-16-|", views: titleLabel)
 	}
 	
 }

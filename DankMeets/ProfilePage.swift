@@ -8,16 +8,7 @@
 
 import UIKit
 
-class ProfilePage : Page, UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    lazy var collectionView : UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = UIColor.gray
-        cv.dataSource = self
-        cv.delegate = self
-        return cv
-    }()
+class ProfilePage : Page {
     
     override func setupViews() {
         super.setupViews()
@@ -40,9 +31,6 @@ class ProfilePage : Page, UICollectionViewDataSource, UICollectionViewDelegate {
                                 profItem.lname = anItem["last_name"] as! String?
 
                             }
-                            DispatchQueue.main.async(execute: {
-                                self.collectionView.reloadData()
-                            })
                         } catch{
                             print("json error")
                         }
@@ -51,22 +39,6 @@ class ProfilePage : Page, UICollectionViewDataSource, UICollectionViewDelegate {
             }
             task.resume()
         }
-    }
-    
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "", for: indexPath)
-        
-//        cell.meetItem = feedItems[indexPath.item] as? MeetItem
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width, height: frame.height)
     }
     
 }

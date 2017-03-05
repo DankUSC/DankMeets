@@ -26,6 +26,15 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 		return cv
 	}()
 	
+	let nearbyTextLabel : UILabel = {
+		let label = UILabel()
+		label.text = "Nearby People"
+		label.textColor = UIColor.gray
+		label.font = UIFont.systemFont(ofSize: 12)
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
+	
 	var nearbyItems: [NearbyItem] = {
 		return []
 	}()
@@ -41,6 +50,7 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 		
 		mapView = MKMapView(frame: CGRect(x:20, y:20, width: frame.width-40, height: 280))
 		addSubview(mapView!)
+		addSubview(nearbyTextLabel)
 		addSubview(collectionView)
 		
 		//getting permissions to display your location on the map
@@ -56,10 +66,8 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 		}
 		
 		addConstraintsWithFormat("H:|[v0]|", views: collectionView)
-		addConstraintsWithFormat("V:|-320-[v0]|", views: collectionView)
-		addConstraint(NSLayoutConstraint(item: collectionView, attribute: .top, relatedBy: .equal, toItem: mapView!, attribute: .bottom, multiplier: 1, constant: 20))
-		
-//		addConstraint(NSLayoutConstraint(item: collectionView, attribute: .bottom, relatedBy: .equal, toItem: frame, attribute: .bottom, multiplier: 1, constant: 0))
+		addConstraintsWithFormat("H:|-20-[v0]|", views: nearbyTextLabel)
+		addConstraintsWithFormat("V:|-320-[v0]-[v1]|", views: nearbyTextLabel, collectionView)
 		
 		//sending http request to server to obtain data
 		let urlString = URL(string: "https://dank-meets.appspot.com/nearby/1")
@@ -103,6 +111,18 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
         
         self.mapView?.setRegion(region, animated: true)
         self.mapView?.showsUserLocation = true
+		
+		//sending location
+		let urlAssembling = "https://dank-meets.appspot.com/location?user_id=1&lat=" + String(location.coordinate.latitude) + "&lon=" + String(location.coordinate.longitude)
+		let escapedAddress = urlAssembling.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+		let urlString = URL(string : escapedAddress!)
+		if let url = urlString {
+			let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+				if error != nil {
+					print(error!)
+				}
+			}
+		}
 	}
 	
 	public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -118,7 +138,7 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: frame.width, height: 200)
+		return CGSize(width: frame.width, height: 50)
 	}
 
 }
