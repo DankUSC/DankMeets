@@ -27,12 +27,17 @@ class FeedCell : UICollectionViewCell {
 
 class MeetCell : FeedCell {
 	
-	
+	override func setupViews() {
+		let messageLabel = UILabel()
+		let selfieImageView = UIImageView()
+	}
 	
 }
 
 class EventCell : FeedCell {
 
-	
+	override func setupViews() {
+		
+	}
 	
 }
