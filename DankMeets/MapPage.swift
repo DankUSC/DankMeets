@@ -76,6 +76,15 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 		createJSONTask()
 	}
 	
+	func pinFriends(){
+		for friend in nearbyItems {
+			let annotation = MKPointAnnotation()
+			annotation.coordinate = CLLocationCoordinate2D(latitude: friend.lat!, longitude: friend.lon!)
+			annotation.title = friend.user
+			mapView?.addAnnotation(annotation)
+		}
+	}
+	
 	func createJSONTask(){
 		
 		//sending http request to server to obtain data
@@ -99,6 +108,7 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 							}
 							
 							DispatchQueue.main.async(execute: {
+								self.pinFriends()
 								self.collectionView.reloadData()
 							})
 							
@@ -124,8 +134,7 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 		
 		//sending location
 		let urlAssembling = "https://dank-meets.appspot.com/location?user_id=1&lat=" + String(location.coordinate.latitude) + "&lon=" + String(location.coordinate.longitude)
-		let escapedAddress = urlAssembling.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
-		let urlString = URL(string : escapedAddress!)
+		let urlString = URL(string : urlAssembling)
 		if let url = urlString {
 			let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
 				if error != nil {

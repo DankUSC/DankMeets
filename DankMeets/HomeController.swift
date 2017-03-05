@@ -14,6 +14,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 	let mapPageId = "mapPageId"
 	let feedPageId = "feedPageId"
 	
+	var appStarted = false
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -67,6 +69,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 		collectionView?.register(FeedPage.self, forCellWithReuseIdentifier: feedPageId)
 		
 		collectionView?.isPagingEnabled = true
+		
 	}
 	
 	func scrollToProfile(){
@@ -92,6 +95,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		
+		if (!appStarted){
+			scrollToMenuIndex(menuIndex: 1,animated: false)
+			appStarted = true
+		}
 		
 		if indexPath.item == 0 {
 			return collectionView.dequeueReusableCell(withReuseIdentifier: profilePageId, for: indexPath)
