@@ -115,7 +115,7 @@ class ProfilePage : Page {
 					if let usableData = data{
 						do{
 							let json = try JSONSerialization.jsonObject(with: usableData, options: [])
-							print(json)
+//							print(json)
 							for anItem in json as! [Dictionary<String, Any>] {
 								self.profileItem.username = anItem["username"] as? String
 								self.profileItem.friend_count = anItem["friend_count"] as? Int

@@ -89,7 +89,7 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 					if let usableData = data{
 						do{
 							let json = try JSONSerialization.jsonObject(with: usableData, options: [])
-							print(json)
+//							print(json)
 							for anItem in json as! [Dictionary<String, Any>] {
 								let nearbyItem = NearbyItem()
 								nearbyItem.user = anItem["user"] as? String
