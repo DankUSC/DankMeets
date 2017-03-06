@@ -79,6 +79,7 @@ class MapPage : Page, UICollectionViewDataSource, UICollectionViewDelegate, UICo
 	}
 	
 	func pinFriends(){
+		mapView?.removeAnnotations((mapView?.annotations)!)
 		for friend in nearbyItems {
 			let annotation = MKPointAnnotation()
 			annotation.coordinate = CLLocationCoordinate2D(latitude: friend.lat!, longitude: friend.lon!)
